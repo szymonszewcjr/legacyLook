@@ -66,16 +66,53 @@ document.body.onload = function() {
                 
                 genericUItweaks();
                 
-                
+                waitForElm(`[aria-label="Spotify – Play Queue"]`).then(bindQueueScreen);
                 
                 })
 
+
+let observer;
+
+const workOnQueueScreen = (evt) =>{
+    observer.disconnect();
+    console.log(evt);
+    waitForElm(`.main-trackList-rowImage`).then(removeRowThumbnails);
+    waitForElm(`[aria-label="Spotify – Play Queue"]`).then(bindQueueScreen);
+}
+const bindQueueScreen = () =>{
+    observer = new MutationObserver(workOnQueueScreen)
+
+
+    let options = {
+        childList: true,
+        attributes: true,
+        characterData: false,
+        subtree: true,
+        attributeFilter: ['one', 'two'],
+        attributeOldValue: false,
+        characterDataOldValue: false
+      };
+
+    observer.observe(document.querySelector(`[aria-label="Spotify – Play Queue"]`),options)
+    
+
+
+    
+    
+    
+    
+
+
+}
 
 
 
 
 
              
+
+
+
 
                
 let collapse1 ='<path d="M.47 4.97a.75.75 0 0 1 1.06 0L8 11.44l6.47-6.47a.75.75 0 1 1 1.06 1.06L8 13.56.47 6.03a.75.75 0 0 1 0-1.06z"></path>';
@@ -88,6 +125,13 @@ let enlarge3 = '<path d="M.47 11.03a.75.75 0 0 0 1.06 0L8 4.56l6.47 6.47a.75.75 
 
 document.body.addEventListener( 'click', function ( event ) {
     
+    removeRowThumbnails();
+
+    setTimeout(removeRowThumbnails, 70);
+    setTimeout(removeRowThumbnails, 70*2);
+    setTimeout(removeRowThumbnails, 70*4);
+    setTimeout(removeRowThumbnails, 70*6);
+
     if(event.target.innerHTML == collapse1 
     || event.target.innerHTML == collapse2 
     || event.target.parentElement.innerHTML == collapse1
@@ -227,7 +271,8 @@ const genericUItweaks = ()=>{
     document.querySelector(`[aria-label="Main"]`).style.gap = none; // removes gap between panels 
     tweakPlaylistTitleAlignment()
     log("Gaps between panels are removed...")
-
+    document.querySelector(`.main-nowPlayingBar-right`).style="transform:translate(-10px)";
+    log("Shifted right playbar section -10px");
     tweakColors();
     removeRoundedBorders();
     squareCovers();
@@ -244,9 +289,8 @@ const genericUItweaks = ()=>{
 
 
         },30)
-        
-    
-    
+
+
         
 
 
