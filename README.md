@@ -1,5 +1,5 @@
 # legacyLook
-[Spicetify](https://github.com/khanhas/spicetify-cli) extension that aims to bring back the legacy layout from around 2017, while focusing on usablility.
+[Spicetify](https://github.com/khanhas/spicetify-cli) extension that aims to bring back the legacy layout from around 2017, while focusing on useablility.
  * Panels have no rounded corners,
  * Gaps between panels are gone,
  * Legacy color palette,
