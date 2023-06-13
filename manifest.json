@@ -1,0 +1,11 @@
+{
+    "name": "legacyLook",
+    "description": "Spicetify extension that aims to bring back the legacy layout from around 2017, while focusing on useablility.",
+    "preview": "legacyLook_preview.png",
+    "main": "legacyLook.js",
+    "readme": "README.md",
+    "authors": [
+        { "name": "szymonszewcjr", "url": "https://github.com/szymonszewcjr" }
+    ],
+    "tags": ["Old Look", "Old Theme"]
+ }
